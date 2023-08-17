@@ -1,0 +1,205 @@
+<html>
+
+<head>
+    <title>産総研 統合DEM（PNG数値タイル）+CS立体図（長野県）</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.css' rel='stylesheet' />
+    <script type="module" src="maplibre-gl-gsi-terrain-fast-png.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .map-overlay {
+            font: bold 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            position: absolute;
+            width: 220px;
+            bottom: 20px;
+            left: 0;
+            padding: 10px;
+        }
+
+        .map-overlay .map-overlay-inner {
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .map-overlay label {
+            display: block;
+            margin: 0 0 0px;
+            font-size: 12px;
+            top: 100px;
+            left: 10px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .map-overlay input {
+            background-color: transparent;
+            display: inline-block;
+            width: 100%;
+            position: relative;
+            margin: 0;
+            cursor: ew-resize;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="map-overlay top">
+        <div class="map-overlay-inner">
+            <label>CS立体図 不透明度: <span id="cs-slider-opacity-value">70%</span></label>
+            <input id="cs-slider-opacity" type="range" min="0" max="100" step="1" value="70">
+        </div>
+    </div>
+    <script type="text/javascript">
+        const map = new maplibregl.Map({
+            container: 'map',
+            style: 'std.json',
+            // style: 'https://tile2.openstreetmap.jp/styles/osm-bright/style.json',
+            zoom: 10,
+            minZoom: 1,
+            maxZoom: 23,
+            pitch: 60,
+            bearing: 0,
+            center: [138.0731, 36.1531],
+            hash: true,
+            attributionControl: false
+        });
+
+        // ズーム・回転
+        map.addControl(new maplibregl.NavigationControl());
+
+        // フルスクリーンモードのオンオフ
+        map.addControl(new maplibregl.FullscreenControl());
+
+        // 現在位置表示
+        map.addControl(new maplibregl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: false
+            },
+            fitBoundsOptions: { maxZoom: 18 },
+            trackUserLocation: true,
+            showUserLocation: true
+        }));
+
+        // スケール表示
+        map.addControl(new maplibregl.ScaleControl({
+            maxWidth: 200,
+            unit: 'metric'
+        }));
+
+        // Attributionを折りたたみ表示
+        map.addControl(new maplibregl.AttributionControl({
+            compact: true,
+            customAttribution: '（<a href="https://twitter.com/syanseto" target="_blank">Twitter</a> | <a href="https://github.com/shi-works/aist-dem-with-cs-on-maplibre-gl-js" target="_blank">Github</a>） '
+        }));
+
+        // 3D地形コントロール
+        map.addControl(
+            new maplibregl.TerrainControl({
+                source: 'aist-dem',
+                exaggeration: 1 // 標高を強調する倍率
+            })
+        );
+
+        map.on('load', () => {
+            /*
+            // 地理院 標高タイルDEM
+            map.addSource("gsi-dem", {
+                type: 'raster-dem',
+                tiles: [
+                    'gsidem://https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png',
+                ],
+                attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html#dem" target="_blank">地理院タイル(標高タイル)</a>',
+                tileSize: 256
+            });
+            */
+
+            // 産総研 標高タイルDEM
+            map.addSource("aist-dem", {
+                type: 'raster-dem',
+                tiles: [
+                    'gsidem://https://tiles.gsj.jp/tiles/elev/mixed/{z}/{y}/{x}.png',
+                ],
+                attribution: '<a href="https://tiles.gsj.jp/tiles/elev/tiles.html" target="_blank">産業技術総合研究所 シームレス標高タイル（統合DEM）</a>',
+                tileSize: 256
+            });
+
+            // map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
+
+            /*
+            // 産総研 標高タイルDEMラスタ
+            map.addSource("aist-dem-raster", {
+                type: 'raster',
+                tiles: [
+                    'https://tiles.gsj.jp/tiles/elev/mixed/{z}/{y}/{x}.png',
+                ],
+                attribution: '<a href="https://tiles.gsj.jp/tiles/elev/tiles.html" target="_blank">産業技術総合研究所 シームレス標高タイル（統合DEM）</a>',
+                tileSize: 256
+            });
+
+            map.addLayer({
+                id: "aist-dem-raster",
+                type: "raster",
+                source: "aist-dem-raster",
+                minzoom: 0,
+                maxzoom: 18,
+                paint: {
+                    'raster-opacity': 0.7
+                },
+            });
+            */
+
+            map.addSource("nagano-cs", {
+                type: 'raster',
+                tiles: [
+                    'https://tile.geospatial.jp/CS/VER2/{z}/{x}/{y}.png',
+                ],
+                attribution: '<a href="https://www.geospatial.jp/ckan/dataset/nagano-csmap" target="_blank">長野県 CS立体図（ver.2）</a>',
+                tileSize: 256
+            });
+
+            map.addLayer({
+                id: "nagano-cs",
+                type: "raster",
+                source: "nagano-cs",
+                minzoom: 0,
+                maxzoom: 18,
+                paint: {
+                    'raster-opacity': 0.7
+                },
+            });
+
+            // スライダーで陰影起伏図の不透明度を制御
+            const cs_sliderOpactiy = document.getElementById('cs-slider-opacity');
+            const cs_sliderOpactiyValue = document.getElementById('cs-slider-opacity-value');
+
+            cs_sliderOpactiy.addEventListener('input', (e) => {
+                map.setPaintProperty(
+                    'nagano-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                cs_sliderOpactiyValue.textContent = e.target.value + '%';
+            });
+
+            map.showTileBoundaries = false;
+
+        })
+
+    </script>
+</body>
+
+</html>
