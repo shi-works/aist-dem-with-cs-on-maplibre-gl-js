@@ -184,7 +184,6 @@
                 },
             });
 
-            /*
             // 広島県CS立体図ソース
             map.addSource("hiroshima-cs", {
                 type: 'raster',
@@ -316,7 +315,28 @@
                     'raster-opacity': 1.0
                 },
             });
-            */
+
+            // 兵庫県CS立体図ソース
+            map.addSource("hyogo-cs", {
+                type: 'raster',
+                tiles: [
+                    'https://gio.pref.hyogo.lg.jp/tile/cs/{z}/{x}/{-y}.png',
+                ],
+                attribution: '<a href="https://www2.ffpri.go.jp/soilmap/data-src.html" target="_blank">森林総合研究所 CS立体図</a>',
+                tileSize: 256
+            });
+
+            // 兵庫県CS立体図レイヤ
+            map.addLayer({
+                id: "hyogo-cs",
+                type: "raster",
+                source: "hyogo-cs",
+                minzoom: 0,
+                maxzoom: 18,
+                paint: {
+                    'raster-opacity': 1.0
+                },
+            });
 
             // スライダーCS立体図の不透明度を制御
             const cs_sliderOpactiy = document.getElementById('cs-slider-opacity');
@@ -330,6 +350,31 @@
                 );
                 map.setPaintProperty(
                     'hiroshima-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                map.setPaintProperty(
+                    'okayama-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                map.setPaintProperty(
+                    'ehime-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                map.setPaintProperty(
+                    'kochi-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                map.setPaintProperty(
+                    'fukushima-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                map.setPaintProperty(
+                    'kumamoto-oita-cs',
                     'raster-opacity',
                     parseInt(e.target.value, 10) / 100
                 );
