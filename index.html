@@ -1,12 +1,12 @@
 <html>
 
 <head>
-    <title>産総研 統合DEM（PNG数値タイル）+CS立体図</title>
+    <title>産総研 シームレス標高タイル（陸域統合DEM）+CS立体図</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.js'></script>
-    <link href='https://unpkg.com/maplibre-gl@3.1.0/dist/maplibre-gl.css' rel='stylesheet' />
-    <script type="module" src="maplibre-gl-gsi-terrain-fast-png.js"></script>
+    <script src='https://unpkg.com/maplibre-gl@3.4.1/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@3.4.1/dist/maplibre-gl.css' rel='stylesheet' />
+    <script src="https://unpkg.com/pmtiles@2.10.0/dist/index.js"></script>
     <style>
         body {
             margin: 0;
@@ -61,19 +61,29 @@
         <div class="map-overlay-inner">
             <label>CS立体図 不透明度: <span id="cs-slider-opacity-value">100%</span></label>
             <input id="cs-slider-opacity" type="range" min="0" max="100" step="1" value="100">
+            <label>陰影起伏図 不透明度: <span id="hillshade-slider-opacity-value">50%</span></label>
+            <input id="hillshade-slider-opacity" type="range" min="0" max="100" step="1" value="50">
         </div>
     </div>
-    <script type="text/javascript">
+    <script type="module">
+
+        // Terrain-RGB形式への変換モジュール
+        import { makeNumPngProtocol } from './numPngProtocol.js'
+
+        // protocolを設定
+        let protocol = new pmtiles.Protocol();
+        maplibregl.addProtocol("pmtiles", protocol.tile);
+
         const map = new maplibregl.Map({
             container: 'map',
             style: 'std.json',
-            // style: 'https://tile2.openstreetmap.jp/styles/osm-bright/style.json',
-            zoom: 10,
+            zoom: 15.41,
             minZoom: 1,
             maxZoom: 23,
-            pitch: 60,
+            pitch: 73,
             bearing: 0,
-            center: [138.0731, 36.1531],
+            maxPitch: 85,
+            center: [134.8305491, 35.299926],
             hash: true,
             attributionControl: false
         });
@@ -115,52 +125,17 @@
         );
 
         map.on('load', () => {
-            /*
-            // 地理院 標高タイルDEM
-            map.addSource("gsi-dem", {
-                type: 'raster-dem',
-                tiles: [
-                    'gsidem://https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html#dem" target="_blank">地理院タイル(標高タイル)</a>',
-                tileSize: 256
-            });
-            */
-
-            // 産総研 標高タイルDEM
+            // 産総研 シームレス標高タイルソース
             map.addSource("aist-dem", {
                 type: 'raster-dem',
                 tiles: [
-                    'gsidem://https://tiles.gsj.jp/tiles/elev/mixed/{z}/{y}/{x}.png',
+                    'numpng://tiles.gsj.jp/tiles/elev/land/{z}/{y}/{x}.png',
                 ],
-                attribution: '<a href="https://tiles.gsj.jp/tiles/elev/tiles.html" target="_blank">産業技術総合研究所 シームレス標高タイル（統合DEM）</a>',
+                attribution: '<a href="https://tiles.gsj.jp/tiles/elev/tiles.html" target="_blank">産業技術総合研究所 シームレス標高タイル(陸域統合DEM)</a>',
                 tileSize: 256
             });
 
-            // map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
-
-            /*
-            // 産総研 標高タイルDEMラスタ
-            map.addSource("aist-dem-raster", {
-                type: 'raster',
-                tiles: [
-                    'https://tiles.gsj.jp/tiles/elev/mixed/{z}/{y}/{x}.png',
-                ],
-                attribution: '<a href="https://tiles.gsj.jp/tiles/elev/tiles.html" target="_blank">産業技術総合研究所 シームレス標高タイル（統合DEM）</a>',
-                tileSize: 256
-            });
-
-            map.addLayer({
-                id: "aist-dem-raster",
-                type: "raster",
-                source: "aist-dem-raster",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 0.7
-                },
-            });
-            */
+            map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
 
             // 長野県CS立体図ソース
             map.addSource("nagano-cs", {
@@ -254,9 +229,9 @@
             map.addSource("kochi-cs", {
                 type: 'raster',
                 tiles: [
-                    'https://www2.ffpri.go.jp/soilmap/tile/cs_kochi/{z}/{x}/{y}.png',
+                    'https://rinya-kochi.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png',
                 ],
-                attribution: '<a href="https://www2.ffpri.go.jp/soilmap/data-src.html" target="_blank">森林総合研究所 CS立体図</a>',
+                attribution: '<a href="https://www.geospatial.jp/ckan/dataset/csmap_kochi" target="_blank">高知県 微地形図（CS立体図）</a>',
                 tileSize: 256
             });
 
@@ -320,9 +295,9 @@
             map.addSource("hyogo-cs", {
                 type: 'raster',
                 tiles: [
-                    'https://gio.pref.hyogo.lg.jp/tile/cs/{z}/{x}/{-y}.png',
+                    'https://rinya-hyogo.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png',
                 ],
-                attribution: '<a href="https://www2.ffpri.go.jp/soilmap/data-src.html" target="_blank">森林総合研究所 CS立体図</a>',
+                attribution: '<a href="https://www.geospatial.jp/ckan/dataset/csmap_hyogo" target="_blank">兵庫県 微地形図（CS立体図）</a>',
                 tileSize: 256
             });
 
@@ -331,6 +306,28 @@
                 id: "hyogo-cs",
                 type: "raster",
                 source: "hyogo-cs",
+                minzoom: 0,
+                maxzoom: 18,
+                paint: {
+                    'raster-opacity': 1.0
+                },
+            });
+
+            // 栃木県CS立体図ソース
+            map.addSource("tochigi-cs", {
+                type: 'raster',
+                tiles: [
+                    'https://rinya-tochigi.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png',
+                ],
+                attribution: '<a href="https://www.geospatial.jp/ckan/dataset/csmap_tochigi" target="_blank">栃木県 微地形図（CS立体図）</a>',
+                tileSize: 256
+            });
+
+            // 栃木県CS立体図レイヤ
+            map.addLayer({
+                id: "tochigi-cs",
+                type: "raster",
+                source: "tochigi-cs",
                 minzoom: 0,
                 maxzoom: 18,
                 paint: {
@@ -378,12 +375,37 @@
                     'raster-opacity',
                     parseInt(e.target.value, 10) / 100
                 );
+                map.setPaintProperty(
+                    'hyogo-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                map.setPaintProperty(
+                    'tochigi-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
                 cs_sliderOpactiyValue.textContent = e.target.value + '%';
+            });
+
+            // スライダーで陰影起伏図の不透明度を制御
+            const hillshade_sliderOpactiy = document.getElementById('hillshade-slider-opacity');
+            const hillshade_sliderOpactiyValue = document.getElementById('hillshade-slider-opacity-value');
+
+            hillshade_sliderOpactiy.addEventListener('input', (e) => {
+                map.setPaintProperty(
+                    'hillshade',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                hillshade_sliderOpactiyValue.textContent = e.target.value + '%';
             });
 
             map.showTileBoundaries = false;
 
         })
+
+        maplibregl.addProtocol('numpng', makeNumPngProtocol());
 
     </script>
 </body>
