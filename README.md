@@ -2,5 +2,5 @@
 ## Public Website
 https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
 
-##　Reference
+## Reference
 https://gsj-seamless.jp/pointCloud/sample/crater/
