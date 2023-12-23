@@ -4,8 +4,8 @@
     <title>産総研 シームレス標高タイル（陸域統合DEM）+CS立体図</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='https://unpkg.com/maplibre-gl@3.4.1/dist/maplibre-gl.js'></script>
-    <link href='https://unpkg.com/maplibre-gl@3.4.1/dist/maplibre-gl.css' rel='stylesheet' />
+    <script src='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css' rel='stylesheet' />
     <script src="https://unpkg.com/pmtiles@2.10.0/dist/index.js"></script>
     <style>
         body {
@@ -137,6 +137,7 @@
 
             map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
 
+            /*
             // 長野県CS立体図ソース
             map.addSource("nagano-cs", {
                 type: 'raster',
@@ -335,6 +336,30 @@
                 },
             });
 
+            // 静岡県CS立体図ソース
+            map.addSource("shizuoka-cs", {
+                type: 'raster',
+                tiles: [
+                    // 'https://fcloud.pref.shizuoka.jp/MAP/raster/CS_3D_MAP/{z}/{x}/{y}.png',
+                    'https://d21pj9gigeop84.cloudfront.net/data/wmt/2023-cs-map/{z}/{x}/{y}.png'
+                ],
+                attribution: '<a href="https://fcloud.pref.shizuoka.jp/fgis/top?redirect=%2F&version=1.23.1219.a" target="_blank">静岡県森林クラウド公開システム</a>',
+                tileSize: 256
+            });
+
+            // 静岡県CS立体図レイヤ
+            map.addLayer({
+                id: "shizuoka-cs",
+                type: "raster",
+                source: "shizuoka-cs",
+                minzoom: 0,
+                maxzoom: 18,
+                paint: {
+                    'raster-opacity': 1.0
+                },
+            });
+            */
+
             // スライダーCS立体図の不透明度を制御
             const cs_sliderOpactiy = document.getElementById('cs-slider-opacity');
             const cs_sliderOpactiyValue = document.getElementById('cs-slider-opacity-value');
@@ -382,6 +407,11 @@
                 );
                 map.setPaintProperty(
                     'tochigi-cs',
+                    'raster-opacity',
+                    parseInt(e.target.value, 10) / 100
+                );
+                map.setPaintProperty(
+                    'shizuoka-cs',
                     'raster-opacity',
                     parseInt(e.target.value, 10) / 100
                 );

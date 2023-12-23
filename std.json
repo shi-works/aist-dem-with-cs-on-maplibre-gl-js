@@ -19,6 +19,86 @@
 				"https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png"
 			],
 			"attribution": "<a href='https://maps.gsi.go.jp/development/ichiran.html#hillshademap' target='_blank'>地理院タイル(陰影起伏図)</a>"
+		},
+		"nagano-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://tile.geospatial.jp/CS/VER2/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www.geospatial.jp/ckan/dataset/nagano-csmap' target='_blank'>長野県 CS立体図（ver.2）</a>",
+			"tileSize": 256
+		},
+		"hiroshima-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://www2.ffpri.go.jp/soilmap/tile/cs_hiroshima/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所 CS立体図</a>",
+			"tileSize": 256
+		},
+		"okayama-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://www2.ffpri.go.jp/soilmap/tile/cs_okayama/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所 CS立体図</a>",
+			"tileSize": 256
+		},
+		"ehime-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://www2.ffpri.go.jp/soilmap/tile/cs_ehime/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所 CS立体図</a>",
+			"tileSize": 256
+		},
+		"kochi-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://rinya-kochi.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_kochi' target='_blank'>高知県 微地形図（CS立体図）</a>",
+			"tileSize": 256
+		},
+		"fukushima-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://www2.ffpri.go.jp/soilmap/tile/cs_fukushima/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所 CS立体図</a>",
+			"tileSize": 256
+		},
+		"kumamoto-oita-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://www2.ffpri.go.jp/soilmap/tile/cs_kumamoto_oita/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所 CS立体図</a>",
+			"tileSize": 256
+		},
+		"hyogo-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://rinya-hyogo.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_hyogo' target='_blank'>兵庫県 微地形図（CS立体図）</a>",
+			"tileSize": 256
+		},
+		"tochigi-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://rinya-tochigi.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_tochigi' target='_blank'>栃木県 微地形図（CS立体図）</a>",
+			"tileSize": 256
+		},
+		"shizuoka-cs": {
+			"type": "raster",
+			"tiles": [
+				"https://d21pj9gigeop84.cloudfront.net/data/wmt/2023-cs-map/{z}/{x}/{y}.png"
+			],
+			"attribution": "<a href='https://www.geospatial.jp/ckan/dataset/shizuoka-2023-csmap' target='_blank'>静岡県CS立体図</a>",
+			"tileSize": 256
 		}
 	},
 	"layers": [
@@ -54,6 +134,86 @@
 			"source": "h",
 			"paint": {
 				"raster-opacity": 0.5
+			}
+		},
+		{
+			"id": "nagano-cs",
+			"type": "raster",
+			"source": "nagano-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "hiroshima-cs",
+			"type": "raster",
+			"source": "hiroshima-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "okayama-cs",
+			"type": "raster",
+			"source": "okayama-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "ehime-cs",
+			"type": "raster",
+			"source": "ehime-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "kochi-cs",
+			"type": "raster",
+			"source": "kochi-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "fukushima-cs",
+			"type": "raster",
+			"source": "fukushima-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "kumamoto-oita-cs",
+			"type": "raster",
+			"source": "kumamoto-oita-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "hyogo-cs",
+			"type": "raster",
+			"source": "hyogo-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "tochigi-cs",
+			"type": "raster",
+			"source": "tochigi-cs",
+			"paint": {
+				"raster-opacity": 1
+			}
+		},
+		{
+			"id": "shizuoka-cs",
+			"type": "raster",
+			"source": "shizuoka-cs",
+			"paint": {
+				"raster-opacity": 1
 			}
 		},
 		{
