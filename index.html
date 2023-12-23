@@ -61,29 +61,30 @@
         <div class="map-overlay-inner">
             <label>CS立体図 不透明度: <span id="cs-slider-opacity-value">100%</span></label>
             <input id="cs-slider-opacity" type="range" min="0" max="100" step="1" value="100">
-            <label>陰影起伏図 不透明度: <span id="hillshade-slider-opacity-value">50%</span></label>
-            <input id="hillshade-slider-opacity" type="range" min="0" max="100" step="1" value="50">
+            <label>陰影起伏図 不透明度: <span id="hillshade-slider-opacity-value">0%</span></label>
+            <input id="hillshade-slider-opacity" type="range" min="0" max="100" step="1" value="0">
         </div>
     </div>
     <script type="module">
 
         // Terrain-RGB形式への変換モジュール
         import { makeNumPngProtocol } from './numPngProtocol.js'
+        maplibregl.addProtocol('numpng', makeNumPngProtocol());
 
-        // protocolを設定
+        // addProtocolの設定
         let protocol = new pmtiles.Protocol();
         maplibregl.addProtocol("pmtiles", protocol.tile);
 
         const map = new maplibregl.Map({
             container: 'map',
             style: 'std.json',
-            zoom: 15.41,
+            zoom: 6.37,
             minZoom: 1,
             maxZoom: 23,
-            pitch: 73,
+            pitch: 0,
             bearing: 0,
             maxPitch: 85,
-            center: [134.8305491, 35.299926],
+            center: [135.898, 35.122],
             hash: true,
             attributionControl: false
         });
@@ -135,230 +136,8 @@
                 tileSize: 256
             });
 
-            map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
-
-            /*
-            // 長野県CS立体図ソース
-            map.addSource("nagano-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://tile.geospatial.jp/CS/VER2/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www.geospatial.jp/ckan/dataset/nagano-csmap" target="_blank">長野県 CS立体図（ver.2）</a>',
-                tileSize: 256
-            });
-
-            // 長野県CS立体図レイヤ
-            map.addLayer({
-                id: "nagano-cs",
-                type: "raster",
-                source: "nagano-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 広島県CS立体図ソース
-            map.addSource("hiroshima-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://www2.ffpri.go.jp/soilmap/tile/cs_hiroshima/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www2.ffpri.go.jp/soilmap/data-src.html" target="_blank">森林総合研究所 CS立体図</a>',
-                tileSize: 256
-            });
-
-            // 広島県CS立体図レイヤ
-            map.addLayer({
-                id: "hiroshima-cs",
-                type: "raster",
-                source: "hiroshima-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 岡山県CS立体図ソース
-            map.addSource("okayama-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://www2.ffpri.go.jp/soilmap/tile/cs_okayama/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www2.ffpri.go.jp/soilmap/data-src.html" target="_blank">森林総合研究所 CS立体図</a>',
-                tileSize: 256
-            });
-
-            // 岡山県CS立体図レイヤ
-            map.addLayer({
-                id: "okayama-cs",
-                type: "raster",
-                source: "okayama-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 愛媛県CS立体図ソース
-            map.addSource("ehime-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://www2.ffpri.go.jp/soilmap/tile/cs_ehime/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www2.ffpri.go.jp/soilmap/data-src.html" target="_blank">森林総合研究所 CS立体図</a>',
-                tileSize: 256
-            });
-
-            // 愛媛県CS立体図レイヤ
-            map.addLayer({
-                id: "ehime-cs",
-                type: "raster",
-                source: "ehime-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 高知県CS立体図ソース
-            map.addSource("kochi-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://rinya-kochi.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www.geospatial.jp/ckan/dataset/csmap_kochi" target="_blank">高知県 微地形図（CS立体図）</a>',
-                tileSize: 256
-            });
-
-            // 高知県CS立体図レイヤ
-            map.addLayer({
-                id: "kochi-cs",
-                type: "raster",
-                source: "kochi-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 福島県CS立体図ソース
-            map.addSource("fukushima-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://www2.ffpri.go.jp/soilmap/tile/cs_fukushima/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www2.ffpri.go.jp/soilmap/data-src.html" target="_blank">森林総合研究所 CS立体図</a>',
-                tileSize: 256
-            });
-
-            // 福島県CS立体図レイヤ
-            map.addLayer({
-                id: "fukushima-cs",
-                type: "raster",
-                source: "fukushima-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 熊本県・大分県CS立体図ソース
-            map.addSource("kumamoto-oita-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://www2.ffpri.go.jp/soilmap/tile/cs_kumamoto_oita/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www2.ffpri.go.jp/soilmap/data-src.html" target="_blank">森林総合研究所 CS立体図</a>',
-                tileSize: 256
-            });
-
-            // 熊本県・大分県CS立体図レイヤ
-            map.addLayer({
-                id: "kumamoto-oita-cs",
-                type: "raster",
-                source: "kumamoto-oita-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 兵庫県CS立体図ソース
-            map.addSource("hyogo-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://rinya-hyogo.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www.geospatial.jp/ckan/dataset/csmap_hyogo" target="_blank">兵庫県 微地形図（CS立体図）</a>',
-                tileSize: 256
-            });
-
-            // 兵庫県CS立体図レイヤ
-            map.addLayer({
-                id: "hyogo-cs",
-                type: "raster",
-                source: "hyogo-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 栃木県CS立体図ソース
-            map.addSource("tochigi-cs", {
-                type: 'raster',
-                tiles: [
-                    'https://rinya-tochigi.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png',
-                ],
-                attribution: '<a href="https://www.geospatial.jp/ckan/dataset/csmap_tochigi" target="_blank">栃木県 微地形図（CS立体図）</a>',
-                tileSize: 256
-            });
-
-            // 栃木県CS立体図レイヤ
-            map.addLayer({
-                id: "tochigi-cs",
-                type: "raster",
-                source: "tochigi-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-
-            // 静岡県CS立体図ソース
-            map.addSource("shizuoka-cs", {
-                type: 'raster',
-                tiles: [
-                    // 'https://fcloud.pref.shizuoka.jp/MAP/raster/CS_3D_MAP/{z}/{x}/{y}.png',
-                    'https://d21pj9gigeop84.cloudfront.net/data/wmt/2023-cs-map/{z}/{x}/{y}.png'
-                ],
-                attribution: '<a href="https://fcloud.pref.shizuoka.jp/fgis/top?redirect=%2F&version=1.23.1219.a" target="_blank">静岡県森林クラウド公開システム</a>',
-                tileSize: 256
-            });
-
-            // 静岡県CS立体図レイヤ
-            map.addLayer({
-                id: "shizuoka-cs",
-                type: "raster",
-                source: "shizuoka-cs",
-                minzoom: 0,
-                maxzoom: 18,
-                paint: {
-                    'raster-opacity': 1.0
-                },
-            });
-            */
+            // 産総研 シームレス標高タイルセット
+            // map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
 
             // スライダーCS立体図の不透明度を制御
             const cs_sliderOpactiy = document.getElementById('cs-slider-opacity');
@@ -434,8 +213,6 @@
             map.showTileBoundaries = false;
 
         })
-
-        maplibregl.addProtocol('numpng', makeNumPngProtocol());
 
     </script>
 </body>
