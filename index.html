@@ -66,7 +66,6 @@
         </div>
     </div>
     <script type="module">
-
         // Terrain-RGB形式への変換モジュール
         import { makeNumPngProtocol } from './numPngProtocol.js'
         maplibregl.addProtocol('numpng', makeNumPngProtocol());
@@ -78,13 +77,13 @@
         const map = new maplibregl.Map({
             container: 'map',
             style: 'std.json',
-            zoom: 6.37,
+            zoom: 15.92,
             minZoom: 1,
             maxZoom: 23,
-            pitch: 0,
-            bearing: 0,
+            pitch: 76,
+            bearing: 9.6,
             maxPitch: 85,
-            center: [135.898, 35.122],
+            center: [134.829512, 35.297434],
             hash: true,
             attributionControl: false
         });
@@ -137,7 +136,7 @@
             });
 
             // 産総研 シームレス標高タイルセット
-            // map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
+            map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
 
             // スライダーCS立体図の不透明度を制御
             const cs_sliderOpactiy = document.getElementById('cs-slider-opacity');

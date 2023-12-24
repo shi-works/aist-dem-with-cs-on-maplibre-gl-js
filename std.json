@@ -95,10 +95,11 @@
 		"shizuoka-cs": {
 			"type": "raster",
 			"tiles": [
-				"https://d21pj9gigeop84.cloudfront.net/data/wmt/2023-cs-map/{z}/{x}/{y}.png"
+				"https://mtile.pref.miyazaki.lg.jp/tile/cssizuoka/{z}/{x}/{y}.png"
 			],
 			"attribution": "<a href='https://www.geospatial.jp/ckan/dataset/shizuoka-2023-csmap' target='_blank'>静岡県CS立体図</a>",
-			"tileSize": 256
+			"tileSize": 256,
+			"scheme": "tms"
 		},
 		"gifu-cs": {
 			"type": "raster",
