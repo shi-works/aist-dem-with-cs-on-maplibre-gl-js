@@ -1,219 +1,175 @@
 <html>
+    <head>
+        <title>産総研 シームレス標高タイル（陸域統合DEM）+CS立体図</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+        <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+        <script src="https://unpkg.com/pmtiles@2.11.0/dist/index.js"></script>
+        <style>
+            body {
+                margin: 0;
+            }
 
-<head>
-    <title>産総研 シームレス標高タイル（陸域統合DEM）+CS立体図</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js'></script>
-    <link href='https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css' rel='stylesheet' />
-    <script src="https://unpkg.com/pmtiles@2.10.0/dist/index.js"></script>
-    <style>
-        body {
-            margin: 0;
-        }
+            #map {
+                height: 100%;
+                width: 100%;
+            }
 
-        #map {
-            height: 100%;
-            width: 100%;
-        }
+            .map-overlay {
+                font: bold 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                position: absolute;
+                width: 180px;
+                bottom: 20px;
+                left: 0;
+                padding: 10px;
+            }
 
-        .map-overlay {
-            font: bold 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            position: absolute;
-            width: 180px;
-            bottom: 20px;
-            left: 0;
-            padding: 10px;
-        }
+            .map-overlay .map-overlay-inner {
+                background-color: #fff;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                border-radius: 3px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
 
-        .map-overlay .map-overlay-inner {
-            background-color: #fff;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
+            .map-overlay label {
+                display: block;
+                margin: 0 0 0px;
+                font-size: 12px;
+                top: 100px;
+                left: 10px;
+                display: block;
+                margin-bottom: 5px;
+            }
 
-        .map-overlay label {
-            display: block;
-            margin: 0 0 0px;
-            font-size: 12px;
-            top: 100px;
-            left: 10px;
-            display: block;
-            margin-bottom: 5px;
-        }
+            .map-overlay input {
+                background-color: transparent;
+                display: inline-block;
+                width: 100%;
+                position: relative;
+                margin: 0;
+                cursor: ew-resize;
+            }
+        </style>
+    </head>
 
-        .map-overlay input {
-            background-color: transparent;
-            display: inline-block;
-            width: 100%;
-            position: relative;
-            margin: 0;
-            cursor: ew-resize;
-        }
-    </style>
-</head>
-
-<body>
-    <div id="map"></div>
-    <div class="map-overlay top">
-        <div class="map-overlay-inner">
-            <label>CS立体図 不透明度: <span id="cs-slider-opacity-value">100%</span></label>
-            <input id="cs-slider-opacity" type="range" min="0" max="100" step="1" value="100">
-            <label>陰影起伏図 不透明度: <span id="hillshade-slider-opacity-value">0%</span></label>
-            <input id="hillshade-slider-opacity" type="range" min="0" max="100" step="1" value="0">
+    <body>
+        <div id="map"></div>
+        <div class="map-overlay top">
+            <div class="map-overlay-inner">
+                <label>CS立体図 不透明度: <span id="cs-slider-opacity-value">100%</span></label>
+                <input id="cs-slider-opacity" type="range" min="0" max="100" step="1" value="100" />
+                <label>陰影起伏図 不透明度: <span id="hillshade-slider-opacity-value">0%</span></label>
+                <input id="hillshade-slider-opacity" type="range" min="0" max="100" step="1" value="0" />
+            </div>
         </div>
-    </div>
-    <script type="module">
-        // Terrain-RGB形式への変換モジュール
-        import { makeNumPngProtocol } from './numPngProtocol.js'
-        maplibregl.addProtocol('numpng', makeNumPngProtocol());
+        <script type="module">
+            // Terrain-RGB形式への変換モジュール
+            import { makeNumPngProtocol } from './numPngProtocol.js';
+            maplibregl.addProtocol('numpng', makeNumPngProtocol());
 
-        // addProtocolの設定
-        let protocol = new pmtiles.Protocol();
-        maplibregl.addProtocol("pmtiles", protocol.tile);
+            // addProtocolの設定
+            let protocol = new pmtiles.Protocol();
+            maplibregl.addProtocol('pmtiles', protocol.tile);
 
-        const map = new maplibregl.Map({
-            container: 'map',
-            style: 'std.json',
-            zoom: 15.92,
-            minZoom: 1,
-            maxZoom: 23,
-            pitch: 76,
-            bearing: 9.6,
-            maxPitch: 85,
-            center: [134.829512, 35.297434],
-            hash: true,
-            attributionControl: false
-        });
-
-        // ズーム・回転
-        map.addControl(new maplibregl.NavigationControl());
-
-        // フルスクリーンモードのオンオフ
-        map.addControl(new maplibregl.FullscreenControl());
-
-        // 現在位置表示
-        map.addControl(new maplibregl.GeolocateControl({
-            positionOptions: {
-                enableHighAccuracy: false
-            },
-            fitBoundsOptions: { maxZoom: 18 },
-            trackUserLocation: true,
-            showUserLocation: true
-        }));
-
-        // スケール表示
-        map.addControl(new maplibregl.ScaleControl({
-            maxWidth: 200,
-            unit: 'metric'
-        }));
-
-        // Attributionを折りたたみ表示
-        map.addControl(new maplibregl.AttributionControl({
-            compact: true,
-            customAttribution: '（<a href="https://twitter.com/shi__works" target="_blank">Twitter</a> | <a href="https://github.com/shi-works/aist-dem-with-cs-on-maplibre-gl-js" target="_blank">Github</a>） '
-        }));
-
-        // 3D地形コントロール
-        map.addControl(
-            new maplibregl.TerrainControl({
-                source: 'aist-dem',
-                exaggeration: 1 // 標高を強調する倍率
-            })
-        );
-
-        map.on('load', () => {
-            // 産総研 シームレス標高タイルソース
-            map.addSource("aist-dem", {
-                type: 'raster-dem',
-                tiles: [
-                    'numpng://tiles.gsj.jp/tiles/elev/land/{z}/{y}/{x}.png',
-                ],
-                attribution: '<a href="https://tiles.gsj.jp/tiles/elev/tiles.html" target="_blank">産業技術総合研究所 シームレス標高タイル(陸域統合DEM)</a>',
-                tileSize: 256
+            const map = new maplibregl.Map({
+                container: 'map',
+                style: 'std.json',
+                zoom: 15.92,
+                minZoom: 1,
+                maxZoom: 23,
+                pitch: 76,
+                bearing: 9.6,
+                maxPitch: 85,
+                center: [134.829512, 35.297434],
+                hash: true,
+                attributionControl: false,
             });
 
-            // 産総研 シームレス標高タイルセット
-            map.setTerrain({ 'source': 'aist-dem', 'exaggeration': 1 });
+            // ズーム・回転
+            map.addControl(new maplibregl.NavigationControl());
 
-            // スライダーCS立体図の不透明度を制御
-            const cs_sliderOpactiy = document.getElementById('cs-slider-opacity');
-            const cs_sliderOpactiyValue = document.getElementById('cs-slider-opacity-value');
+            // フルスクリーンモードのオンオフ
+            map.addControl(new maplibregl.FullscreenControl());
 
-            cs_sliderOpactiy.addEventListener('input', (e) => {
-                map.setPaintProperty(
-                    'nagano-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'hiroshima-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'okayama-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'ehime-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'kochi-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'fukushima-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'kumamoto-oita-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'hyogo-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'tochigi-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                map.setPaintProperty(
-                    'shizuoka-cs',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                cs_sliderOpactiyValue.textContent = e.target.value + '%';
+            // 現在位置表示
+            map.addControl(
+                new maplibregl.GeolocateControl({
+                    positionOptions: {
+                        enableHighAccuracy: false,
+                    },
+                    fitBoundsOptions: { maxZoom: 18 },
+                    trackUserLocation: true,
+                    showUserLocation: true,
+                })
+            );
+
+            // スケール表示
+            map.addControl(
+                new maplibregl.ScaleControl({
+                    maxWidth: 200,
+                    unit: 'metric',
+                })
+            );
+
+            // Attributionを折りたたみ表示
+            map.addControl(
+                new maplibregl.AttributionControl({
+                    compact: true,
+                    customAttribution: '（<a href="https://twitter.com/shi__works" target="_blank">Twitter</a> | <a href="https://github.com/shi-works/aist-dem-with-cs-on-maplibre-gl-js" target="_blank">Github</a>） ',
+                })
+            );
+
+            // 3D地形コントロール
+            map.addControl(
+                new maplibregl.TerrainControl({
+                    source: 'aist-dem',
+                    exaggeration: 1, // 標高を強調する倍率
+                })
+            );
+
+            map.on('load', () => {
+                // 産総研 シームレス標高タイルソース
+                map.addSource('aist-dem', {
+                    type: 'raster-dem',
+                    tiles: ['numpng://tiles.gsj.jp/tiles/elev/land/{z}/{y}/{x}.png'],
+                    attribution: '<a href="https://tiles.gsj.jp/tiles/elev/tiles.html" target="_blank">産業技術総合研究所 シームレス標高タイル(陸域統合DEM)</a>',
+                    tileSize: 256,
+                });
+
+                // 産総研 シームレス標高タイルセット
+                // map.setTerrain({ source: 'aist-dem', exaggeration: 1 });
+
+                // スライダーCS立体図の不透明度を制御
+                const cs_sliderOpactiy = document.getElementById('cs-slider-opacity');
+                const cs_sliderOpactiyValue = document.getElementById('cs-slider-opacity-value');
+
+                cs_sliderOpactiy.addEventListener('input', (e) => {
+                    map.setPaintProperty('nagano-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('hiroshima-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('okayama-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('ehime-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('kochi-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('fukushima-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('kumamoto-oita-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('hyogo-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('tochigi-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('shizuoka-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    cs_sliderOpactiyValue.textContent = e.target.value + '%';
+                });
+
+                // スライダーで陰影起伏図の不透明度を制御
+                const hillshade_sliderOpactiy = document.getElementById('hillshade-slider-opacity');
+                const hillshade_sliderOpactiyValue = document.getElementById('hillshade-slider-opacity-value');
+
+                hillshade_sliderOpactiy.addEventListener('input', (e) => {
+                    map.setPaintProperty('hillshade', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    hillshade_sliderOpactiyValue.textContent = e.target.value + '%';
+                });
+
+                map.showTileBoundaries = false;
             });
-
-            // スライダーで陰影起伏図の不透明度を制御
-            const hillshade_sliderOpactiy = document.getElementById('hillshade-slider-opacity');
-            const hillshade_sliderOpactiyValue = document.getElementById('hillshade-slider-opacity-value');
-
-            hillshade_sliderOpactiy.addEventListener('input', (e) => {
-                map.setPaintProperty(
-                    'hillshade',
-                    'raster-opacity',
-                    parseInt(e.target.value, 10) / 100
-                );
-                hillshade_sliderOpactiyValue.textContent = e.target.value + '%';
-            });
-
-            map.showTileBoundaries = false;
-
-        })
-
-    </script>
-</body>
-
+        </script>
+    </body>
 </html>
