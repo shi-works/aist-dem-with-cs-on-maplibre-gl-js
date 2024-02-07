@@ -54,13 +54,13 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
 - 静岡県のCS立体図
     - 出典：https://kenzkenz.xsrv.jp/open-hinata/open-hinata.html
       - 原初データ出典：[静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuokakencsmap2)
-    - 概要：G空間情報センターにて公開されている、静岡県CS立体図を[@kenzkenz](https://twitter.com/kenzkenz)様がタイル化して作成。
+    - 概要：G空間情報センターにて公開されている、静岡県CS立体図を[@kenzkenz](https://twitter.com/kenzkenz)様がタイル化したデータです。
     - ライセンス：-
 
 - 岐阜県のCS立体図
     - 出典：https://kenzkenz.xsrv.jp/open-hinata/open-hinata.html
       - 原初データ出典：[岐阜県CS立体図2019（GeoTIFF形式）](https://www.geospatial.jp/ckan/dataset/cs-2019-geotiff)
-    - 概要：G空間情報センターにて公開されている、岐阜県CS立体図2019（GeoTIFF形式）を[@kenzkenz](https://twitter.com/kenzkenz)様がタイル化して作成。
+    - 概要：G空間情報センターにて公開されている、岐阜県CS立体図2019（GeoTIFF形式）を[@kenzkenz](https://twitter.com/kenzkenz)様がタイル化したデータです。
     - ライセンス：-
 
 ## [shi-works](https://twitter.com/shi__works)
