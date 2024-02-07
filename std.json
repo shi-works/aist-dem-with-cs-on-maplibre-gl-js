@@ -19,31 +19,31 @@
         "nagano-cs": {
             "type": "raster",
             "tiles": ["https://tile.geospatial.jp/CS/VER2/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/nagano-csmap' target='_blank'>長野県 CS立体図（ver.2）</a>",
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/nagano-csmap' target='_blank'>長野県CS立体図（ver.2）</a>",
             "tileSize": 256
         },
         "hiroshima-cs": {
             "type": "raster",
             "tiles": ["https://www2.ffpri.go.jp/soilmap/tile/cs_hiroshima/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所 CS立体図</a>",
+            "attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所CS立体図</a>",
             "tileSize": 256
         },
         "okayama-cs": {
             "type": "raster",
             "tiles": ["https://www2.ffpri.go.jp/soilmap/tile/cs_okayama/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所 CS立体図</a>",
+            "attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所CS立体図</a>",
             "tileSize": 256
         },
         "ehime-cs": {
             "type": "raster",
             "tiles": ["https://www2.ffpri.go.jp/soilmap/tile/cs_ehime/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所 CS立体図</a>",
+            "attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>森林総合研究所CS立体図</a>",
             "tileSize": 256
         },
         "kochi-cs": {
             "type": "raster",
             "tiles": ["https://rinya-kochi.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_kochi' target='_blank'>高知県 微地形図（CS立体図）</a>",
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_kochi' target='_blank'>高知県微地形図（CS立体図）</a>",
             "tileSize": 256
         },
         "fukushima-cs": {
@@ -88,6 +88,12 @@
             "type": "raster",
             "tiles": ["https://xs489works.xsrv.jp/raster-tiles/pref-osaka/osaka-cs-tiles/{z}/{x}/{y}.png"],
             "attribution": "<a href='' target='_blank'>大阪府CS立体図</a>",
+            "tileSize": 256
+        },
+        "noto-cs": {
+            "type": "raster",
+            "tiles": ["https://www2.ffpri.go.jp/soilmap/tile/cs_noto/{z}/{x}/{y}.png"],
+            "attribution": "<a href='' target='_blank'>能登(石川県)CS立体図</a>",
             "tileSize": 256
         }
     },
@@ -208,6 +214,14 @@
             "id": "osaka-cs",
             "type": "raster",
             "source": "osaka-cs",
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
+            "id": "noto-cs",
+            "type": "raster",
+            "source": "noto-cs",
             "paint": {
                 "raster-opacity": 1
             }
