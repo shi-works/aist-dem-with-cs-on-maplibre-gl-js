@@ -63,5 +63,12 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - 概要：G空間情報センターにて公開されている、岐阜県CS立体図2019（GeoTIFF形式）を[@kenzkenz](https://twitter.com/kenzkenz)様がタイル化して作成。
     - ライセンス：-
 
+## 大阪府
+- 大阪府のCS立体図
+    - 出典：
+      - 原初データ出典：[大阪府 微地形地図](https://www.geospatial.jp/ckan/dataset/cs)
+    - 概要：G空間情報センターにて公開されている、大阪府の微地形地図をタイル化して作成。
+    - ライセンス：-
+
 
 
