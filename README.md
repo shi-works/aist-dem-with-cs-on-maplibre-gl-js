@@ -33,3 +33,35 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - 出典：https://www2.ffpri.go.jp/soilmap/data-src.html
     - 概要：石川県が取得したLiDARデータ（2020年7月～2023年2月）による0.5mDEMを使用して作成。
     - ライセンス：[森林土壌デジタルマップ・利用規約](https://www2.ffpri.go.jp/soilmap/#)参照。
+
+## 林野庁
+- 栃木県のCS立体図
+    - 出典：https://www.geospatial.jp/ckan/dataset/csmap_tochigi
+    - 概要：令和３～４年度に栃木県が実施した航空レーザ測量データを使用して作成。
+    - ライセンス：[利用規約](https://www.geospatial.jp/ckan/dataset/csmap_tochigi/resource/4dffe2ac-511f-49eb-87c4-29c936ed2cb7)参照。
+
+- 兵庫県のCS立体図(0.5m)
+    - 出典：https://www.geospatial.jp/ckan/dataset/csmap_hyogo
+    - 概要：兵庫県（令和２～３年度）及び国土交通省近畿地方整備局六甲砂防事務所（平成24～25年度）が実施した航空レーザ測量データを使用して作成。
+    - ライセンス：[利用規約](https://www.geospatial.jp/ckan/dataset/csmap_hyogo/resource/ab5fab0d-99a1-4638-9807-a09eb53e14b7)参照。
+
+- 高知県のCS立体図
+    - 出典：https://www.geospatial.jp/ckan/dataset/csmap_kochi
+    - 概要：平成30年度に林野庁が実施した航空レーザ測量データを基に、高知県が作成した。
+    - ライセンス：[利用規約](https://www.geospatial.jp/ckan/dataset/csmap_kochi/resource/86bbb203-3025-4c58-b130-b8fe692f9c09)参照。
+
+## [open-hinata](https://kenzkenz.xsrv.jp/open-hinata/open-hinata.html)
+- 静岡県のCS立体図
+    - 出典：https://kenzkenz.xsrv.jp/open-hinata/open-hinata.html
+      - 原初データ出典：[静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuokakencsmap2)
+    - 概要：G空間情報センターにて公開されている、静岡県CS立体図を[@kenzkenz](https://twitter.com/kenzkenz)様がタイル化して作成。
+    - ライセンス：-
+
+- 岐阜県のCS立体図
+    - 出典：https://kenzkenz.xsrv.jp/open-hinata/open-hinata.html
+      - 原初データ出典：[岐阜県CS立体図2019（GeoTIFF形式）](https://www.geospatial.jp/ckan/dataset/cs-2019-geotiff)
+    - 概要：G空間情報センターにて公開されている、岐阜県CS立体図2019（GeoTIFF形式）を[@kenzkenz](https://twitter.com/kenzkenz)様がタイル化して作成。
+    - ライセンス：-
+
+
+
