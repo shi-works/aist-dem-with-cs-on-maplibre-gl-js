@@ -61,13 +61,13 @@
         "hyogo-cs": {
             "type": "raster",
             "tiles": ["https://rinya-hyogo.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_hyogo' target='_blank'>兵庫県 微地形図（CS立体図）</a>",
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_hyogo' target='_blank'>兵庫県微地形図（CS立体図）</a>",
             "tileSize": 256
         },
         "tochigi-cs": {
             "type": "raster",
             "tiles": ["https://rinya-tochigi.geospatial.jp/2023/rinya/tile/csmap/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_tochigi' target='_blank'>栃木県 微地形図（CS立体図）</a>",
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/csmap_tochigi' target='_blank'>栃木県微地形図（CS立体図）</a>",
             "tileSize": 256
         },
         "shizuoka-cs": {
