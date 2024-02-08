@@ -73,14 +73,14 @@
         "shizuoka-cs": {
             "type": "raster",
             "tiles": ["https://mtile.pref.miyazaki.lg.jp/tile/cssizuoka/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/shizuoka-2023-csmap' target='_blank'>静岡県CS立体図</a>",
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/shizuokakencsmap2' target='_blank'>静岡県CS立体図</a>",
             "tileSize": 256,
             "scheme": "tms"
         },
         "gifu-cs": {
             "type": "raster",
             "tiles": ["https://kenzkenz2.xsrv.jp/gihucs/{z}/{x}/{y}.png"],
-            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/cs-2022-geotiff' target='_blank'>岐阜県CS立体図</a>",
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/cs-2019-geotiff' target='_blank'>岐阜県CS立体図</a>",
             "tileSize": 256,
             "scheme": "tms"
         },
