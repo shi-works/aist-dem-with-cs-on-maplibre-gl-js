@@ -126,6 +126,9 @@
             "id": "nagano-cs",
             "type": "raster",
             "source": "nagano-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -134,6 +137,9 @@
             "id": "hiroshima-cs",
             "type": "raster",
             "source": "hiroshima-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -142,6 +148,9 @@
             "id": "okayama-cs",
             "type": "raster",
             "source": "okayama-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -150,6 +159,9 @@
             "id": "ehime-cs",
             "type": "raster",
             "source": "ehime-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -158,6 +170,9 @@
             "id": "kochi-cs",
             "type": "raster",
             "source": "kochi-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -166,6 +181,9 @@
             "id": "fukushima-cs",
             "type": "raster",
             "source": "fukushima-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -174,6 +192,9 @@
             "id": "kumamoto-oita-cs",
             "type": "raster",
             "source": "kumamoto-oita-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -182,6 +203,9 @@
             "id": "hyogo-cs",
             "type": "raster",
             "source": "hyogo-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -190,6 +214,9 @@
             "id": "tochigi-cs",
             "type": "raster",
             "source": "tochigi-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -198,6 +225,9 @@
             "id": "shizuoka-cs",
             "type": "raster",
             "source": "shizuoka-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -206,6 +236,9 @@
             "id": "gifu-cs",
             "type": "raster",
             "source": "gifu-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -214,6 +247,9 @@
             "id": "osaka-cs",
             "type": "raster",
             "source": "osaka-cs",
+            "layout": {
+                "visibility": "visible"
+            },
             "paint": {
                 "raster-opacity": 1
             }
@@ -222,6 +258,9 @@
             "id": "noto-cs",
             "type": "raster",
             "source": "noto-cs",
+            "layout": {
+                "visibility": "none"
+            },
             "paint": {
                 "raster-opacity": 1
             }
