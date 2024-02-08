@@ -82,11 +82,34 @@
                 flex-direction: column;
                 margin-right: 20px;
             }
+
+            .map-center-marker {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 30px;
+                pointer-events: none;
+            }
+
+            .coords-display {
+                position: absolute;
+                bottom: 140px;
+                left: 0px;
+                margin: 10px;
+                padding: 5px;
+                background: rgba(255, 255, 255, 1);
+                border-radius: 5px;
+                font-size: 12px;
+                z-index: 1;
+            }
         </style>
     </head>
 
     <body>
         <div id="map"></div>
+        <div class="map-center-marker">+</div>
+        <div class="coords-display" id="coords"></div>
         <div id="info">
             <details>
                 <summary class="yubi">
@@ -293,6 +316,14 @@
             toggleMapLayerVisibility('ehime-cs', 'ehime-cs');
             toggleMapLayerVisibility('kochi-cs', 'kochi-cs');
             toggleMapLayerVisibility('kumamoto-oita-cs', 'kumamoto-oita-cs');
+
+            // 地図が移動したら中心の座標を更新
+            map.on('move', function () {
+                var center = map.getCenter();
+                var lat = center.lat.toFixed(5);
+                var lng = center.lng.toFixed(5);
+                document.getElementById('coords').innerHTML = '中心座標: ' + lat + ', ' + lng + '<br>' + '<a href="https://www.google.com/maps?q=' + lat + ',' + lng + '&hl=ja" target="_blank">🌎GoogleMaps</a>' + ' ' + '<a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + lat + ',' + lng + '&hl=ja" target="_blank">📷StreetView</a>';
+            });
         </script>
     </body>
 </html>
