@@ -17,7 +17,7 @@
             }
 
             .map-overlay {
-                font: bold 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                font: bold 12px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
                 position: absolute;
                 width: 180px;
                 bottom: 20px;
@@ -94,7 +94,8 @@
 
             .coords-display {
                 position: absolute;
-                bottom: 140px;
+                font: bold 12px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+                bottom: 125px;
                 left: 0px;
                 margin: 10px;
                 padding: 5px;
@@ -253,7 +254,7 @@
                 var center = map.getCenter();
                 var lat = center.lat.toFixed(5);
                 var lng = center.lng.toFixed(5);
-                document.getElementById('coords').innerHTML = '中心座標: ' + lat + ', ' + lng + '<br>' + '<a href="https://www.google.com/maps?q=' + lat + ',' + lng + '&hl=ja" target="_blank">🌎Google Maps</a>' + ' ' + '<a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + lat + ',' + lng + '&hl=ja" target="_blank">📷Street View</a>';
+                document.getElementById('coords').innerHTML = '中心座標: ' + lat + ', ' + lng + '<br>' + '<a href="https://www.google.com/maps?q=' + lat + ',' + lng + '&hl=ja" target="_blank">🌎GoogleMaps</a>' + ' ' + '<a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + lat + ',' + lng + '&hl=ja" target="_blank">📷StreetView</a>';
             }
 
             map.on('load', () => {
