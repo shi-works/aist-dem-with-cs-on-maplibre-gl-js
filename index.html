@@ -51,11 +51,107 @@
                 margin: 0;
                 cursor: ew-resize;
             }
+
+            #info {
+                padding: 6px 8px;
+                font: 12px/14px Arial, Helvetica, sans-serif;
+                color: navy;
+                background: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                width: fit-content;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 1;
+            }
+
+            .yubi {
+                cursor: pointer;
+                z-index: 1;
+            }
+
+            .checkbox-button-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+            }
+
+            .column {
+                display: flex;
+                flex-direction: column;
+                margin-right: 20px;
+            }
         </style>
     </head>
 
     <body>
         <div id="map"></div>
+        <div id="info">
+            <details>
+                <summary class="yubi">
+                    <strong>CS立体図</strong>
+                </summary>
+                <fieldset>
+                    <div class="checkbox-button-container">
+                        <div class="column">
+                            <div>
+                                <input type="checkbox" id="fukushima-cs" value="fukushima-cs" checked />
+                                <label for="fukushima-cs">福島県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="tochigi-cs" value="tochigi-cs" checked />
+                                <label for="tochigi-cs">栃木県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="noto-cs" value="noto-cs" checked />
+                                <label for="noto-cs">能登(石川県)CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="nagano-cs" value="nagano-cs" checked />
+                                <label for="nagano-cs">長野県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="gifu-cs" value="gifu-cs" checked />
+                                <label for="gifu-cs">岐阜県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="shizuoka-cs" value="shizuoka-cs" checked />
+                                <label for="shizuoka-cs">静岡県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="osaka-cs" value="osaka-cs" checked />
+                                <label for="osaka-cs">大阪府CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="hyogo-cs" value="hyogo-cs" checked />
+                                <label for="hyogo-cs">兵庫県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="okayama-cs" value="okayama-cs" checked />
+                                <label for="okayama-cs">岡山県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="hiroshima-cs" value="hiroshima-cs" checked />
+                                <label for="hiroshima-cs">広島県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="ehime-cs" value="ehime-cs" checked />
+                                <label for="ehime-cs">愛媛県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="kochi-cs" value="kochi-cs" checked />
+                                <label for="kochi-cs">高知県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="kumamoto-oita-cs" value="kumamoto-oita-cs" checked />
+                                <label for="kumamoto-oita-cs">熊本県・大分県CS立体図</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </details>
+        </div>
         <div class="map-overlay top">
             <div class="map-overlay-inner">
                 <label>CS立体図 不透明度: <span id="cs-slider-opacity-value">100%</span></label>
@@ -173,6 +269,30 @@
 
                 map.showTileBoundaries = false;
             });
+
+            // ============================== レイヤの表示・非表示切り替え制御 ==============================
+
+            // レイヤ表示・非表示切り替え関数
+            function toggleMapLayerVisibility(checkboxId, layerId) {
+                document.getElementById(checkboxId).addEventListener('change', function (e) {
+                    map.setLayoutProperty(layerId, 'visibility', e.target.checked ? 'visible' : 'none');
+                });
+            }
+
+            // レイヤ表示・非表示切り替え制御
+            toggleMapLayerVisibility('fukushima-cs', 'fukushima-cs');
+            toggleMapLayerVisibility('tochigi-cs', 'tochigi-cs');
+            toggleMapLayerVisibility('noto-cs', 'noto-cs');
+            toggleMapLayerVisibility('nagano-cs', 'nagano-cs');
+            toggleMapLayerVisibility('gifu-cs', 'gifu-cs');
+            toggleMapLayerVisibility('shizuoka-cs', 'shizuoka-cs');
+            toggleMapLayerVisibility('osaka-cs', 'osaka-cs');
+            toggleMapLayerVisibility('hyogo-cs', 'hyogo-cs');
+            toggleMapLayerVisibility('okayama-cs', 'okayama-cs');
+            toggleMapLayerVisibility('hiroshima-cs', 'hiroshima-cs');
+            toggleMapLayerVisibility('ehime-cs', 'ehime-cs');
+            toggleMapLayerVisibility('kochi-cs', 'kochi-cs');
+            toggleMapLayerVisibility('kumamoto-oita-cs', 'kumamoto-oita-cs');
         </script>
     </body>
 </html>
