@@ -248,6 +248,14 @@
                 })
             );
 
+            // 中心の座標を表示する関数
+            function updateCoordsDisplay() {
+                var center = map.getCenter();
+                var lat = center.lat.toFixed(5);
+                var lng = center.lng.toFixed(5);
+                document.getElementById('coords').innerHTML = '中心座標: ' + lat + ', ' + lng + '<br>' + '<a href="https://www.google.com/maps?q=' + lat + ',' + lng + '&hl=ja" target="_blank">🌎Google Maps</a>' + ' ' + '<a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + lat + ',' + lng + '&hl=ja" target="_blank">📷Street View</a>';
+            }
+
             map.on('load', () => {
                 // 産総研 シームレス標高タイルソース
                 map.addSource('aist-dem', {
@@ -291,6 +299,8 @@
                 });
 
                 map.showTileBoundaries = false;
+
+                updateCoordsDisplay(); // 初期座標を表示
             });
 
             // ============================== レイヤの表示・非表示切り替え制御 ==============================
@@ -317,12 +327,19 @@
             toggleMapLayerVisibility('kochi-cs', 'kochi-cs');
             toggleMapLayerVisibility('kumamoto-oita-cs', 'kumamoto-oita-cs');
 
+            /*
             // 地図が移動したら中心の座標を更新
             map.on('move', function () {
                 var center = map.getCenter();
                 var lat = center.lat.toFixed(5);
                 var lng = center.lng.toFixed(5);
                 document.getElementById('coords').innerHTML = '中心座標: ' + lat + ', ' + lng + '<br>' + '<a href="https://www.google.com/maps?q=' + lat + ',' + lng + '&hl=ja" target="_blank">🌎GoogleMaps</a>' + ' ' + '<a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + lat + ',' + lng + '&hl=ja" target="_blank">📷StreetView</a>';
+            });
+            */
+
+            // 地図が移動したら中心の座標を更新
+            map.on('move', function () {
+                updateCoordsDisplay(); // 座標を更新
             });
         </script>
     </body>
