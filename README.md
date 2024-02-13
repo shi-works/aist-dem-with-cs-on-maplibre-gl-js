@@ -73,7 +73,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - 概要：G空間情報センターにて公開されている、[大阪府 微地形地図](https://www.geospatial.jp/ckan/dataset/cs)をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
     - ズームレベル：4～18
     - タイルサイズ：256x256ピクセル
-    - ライセンス：原初データのライセンスに従います。
+    - ライセンス：CC BY 4.0
 
 <!--
 - 静岡県のCS立体図
