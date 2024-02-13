@@ -69,7 +69,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
 - 大阪府のCS立体図
     - 出典（タイルURL）：https://xs489works.xsrv.jp/raster-tiles/pref-osaka/osaka-cs-tiles/{z}/{x}/{y}.png
       - 原初データ出典：[大阪府 微地形地図](https://www.geospatial.jp/ckan/dataset/cs)
-      - ライセンス：- （参考）[大阪府オープンデータカタログサイト 利用規約](https://odcs.bodik.jp/270008/tos/)
+      - ライセンス：- （参考）[大阪府オープンデータカタログサイト 利用規約（CC BY 4.0）](https://odcs.bodik.jp/270008/tos/)
     - 概要：G空間情報センターにて公開されている、[大阪府 微地形地図](https://www.geospatial.jp/ckan/dataset/cs)をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
     - ズームレベル：4～18
     - タイルサイズ：256x256ピクセル
