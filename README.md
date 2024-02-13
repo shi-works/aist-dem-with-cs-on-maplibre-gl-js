@@ -77,6 +77,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
 - 静岡県のCS立体図
     - 出典（タイルURL）：https://xs489works.xsrv.jp/raster-tiles/pref-shizuoka/shizuoka-cs-tiles/{z}/{x}/{y}.png
       - 原初データ出典：[VIRTUAL SHIZUOKA 静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuoka-2023-csmap)
+      - 概要：令和元年度から令和3年度にかけて、静岡県が実施した航空レーザ測量成果を基に、地上画素寸法50センチの解像度で作成。
       - ライセンス：CC BY 4.0
     - 概要：G空間情報センターにて公開されている、[VIRTUAL SHIZUOKA 静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuoka-2023-csmap)をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
     - ズームレベル：4～18
