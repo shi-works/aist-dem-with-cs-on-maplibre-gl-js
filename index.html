@@ -140,11 +140,11 @@
                                 <label for="gifu-cs">岐阜県CS立体図</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="shizuoka-cs" value="shizuoka-cs" />
+                                <input type="checkbox" id="shizuoka-cs" value="shizuoka-cs" checked />
                                 <label for="shizuoka-cs">静岡県CS立体図</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="osaka-cs" value="osaka-cs" checked />
+                                <input type="checkbox" id="osaka-cs" value="osaka-cs" />
                                 <label for="osaka-cs">大阪府CS立体図</label>
                             </div>
                             <div>
@@ -174,6 +174,21 @@
                         </div>
                     </div>
                 </fieldset>
+                <!--
+                <summary class="yubi">
+                    <strong>各種レイヤー</strong>
+                </summary>
+                <fieldset>
+                    <div class="checkbox-button-container">
+                        <div class="column">
+                            <div>
+                                <input type="checkbox" id="landslide" value="landslide" />
+                                <label for="landslide">地すべり地形分布図</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                -->
             </details>
         </div>
         <div class="map-overlay top">
@@ -195,14 +210,14 @@
 
             const map = new maplibregl.Map({
                 container: 'map',
-                style: 'std.json',
-                zoom: 9.41,
+                style: 'std_2.json',
+                zoom: 9.06,
                 minZoom: 1,
                 maxZoom: 23,
                 pitch: 0,
                 bearing: 0,
                 maxPitch: 85,
-                center: [135.3968, 34.668],
+                center: [138.3126, 35.1249],
                 hash: true,
                 attributionControl: false,
             });
@@ -314,6 +329,7 @@
             }
 
             // レイヤ表示・非表示切り替え制御
+            // CS立体図
             toggleMapLayerVisibility('fukushima-cs', 'fukushima-cs');
             toggleMapLayerVisibility('tochigi-cs', 'tochigi-cs');
             toggleMapLayerVisibility('noto-cs', 'noto-cs');
@@ -329,13 +345,8 @@
             toggleMapLayerVisibility('kumamoto-oita-cs', 'kumamoto-oita-cs');
 
             /*
-            // 地図が移動したら中心の座標を更新
-            map.on('move', function () {
-                var center = map.getCenter();
-                var lat = center.lat.toFixed(5);
-                var lng = center.lng.toFixed(5);
-                document.getElementById('coords').innerHTML = '中心座標: ' + lat + ', ' + lng + '<br>' + '<a href="https://www.google.com/maps?q=' + lat + ',' + lng + '&hl=ja" target="_blank">🌎GoogleMaps</a>' + ' ' + '<a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + lat + ',' + lng + '&hl=ja" target="_blank">📷StreetView</a>';
-            });
+            // 各種レイヤー
+            toggleMapLayerVisibility('landslide', 'landslide');
             */
 
             // 地図が移動したら中心の座標を更新
