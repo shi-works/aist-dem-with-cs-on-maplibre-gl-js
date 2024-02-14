@@ -51,6 +51,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - ライセンス：[利用規約](https://www.geospatial.jp/ckan/dataset/csmap_kochi/resource/86bbb203-3025-4c58-b130-b8fe692f9c09)参照。
 
 ## [open-hinata](https://kenzkenz.xsrv.jp/open-hinata/open-hinata.html)
+<!--
 - 静岡県のCS立体図
     - 出典：https://kenzkenz.xsrv.jp/open-hinata/open-hinata.html
       - 原初データ出典：[静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuokakencsmap2)
@@ -58,6 +59,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
       - ライセンス：-
     - 概要：G空間情報センターにて公開されている、[静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuokakencsmap2)を[@kenzkenz](https://twitter.com/kenzkenz)様がラスタータイル化したデータです。
     - ライセンス：-
+-->
 
 - 岐阜県のCS立体図
     - 出典：https://kenzkenz.xsrv.jp/open-hinata/open-hinata.html
@@ -75,7 +77,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - タイルサイズ：256x256ピクセル
     - ライセンス：CC BY 4.0
 
-<!--
+
 - 静岡県のCS立体図
     - 出典（タイルURL）：https://shiworks.xsrv.jp/raster-tiles/pref-shizuoka/shizuoka-cs-tiles/{z}/{x}/{y}.png
       - 原初データ出典：[VIRTUAL SHIZUOKA 静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuoka-2023-csmap)
@@ -85,6 +87,3 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - ズームレベル：4～18
     - タイルサイズ：256x256ピクセル
     - ライセンス：CC BY 4.0
--->
-
-
