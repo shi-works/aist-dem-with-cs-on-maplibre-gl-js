@@ -181,6 +181,11 @@
                     <div class="checkbox-button-container">
                         <div class="column">
                             <div>
+                                <input type="checkbox" id="landslide" value="landslide" />
+                                <label for="landslide">地すべり地形分布図</label>
+                                <label id="open-legend-landslide" style="text-decoration: underline; cursor: pointer">凡例</label>
+                            </div>
+                            <div>
                                 <input type="checkbox" id="plateau-lod1" value="plateau-lod1" />
                                 <label for="plateau-lod1">3D都市モデルPLATEAU建物LOD1</label>
                             </div>
@@ -369,6 +374,7 @@
             toggleMapLayerVisibility('kochi-cs', 'kochi-cs');
             toggleMapLayerVisibility('kumamoto-oita-cs', 'kumamoto-oita-cs');
             toggleMapLayerVisibility('plateau-lod1', 'plateau-lod1');
+            toggleMapLayerVisibility('landslide', 'landslide');
 
             /*
             // 各種レイヤー
@@ -379,6 +385,21 @@
             map.on('move', function () {
                 updateCoordsDisplay(); // 座標を更新
             });
+
+            // 地すべり地形分布図凡例
+
+            // イベントリスナーを追加
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('open-legend-landslide').addEventListener('click', OpenLegendRoad);
+            });
+
+            function OpenLegendRoad() {
+                // 凡例の内容を含むウェブページのURL
+                var legendUrl = './legend-landslide.png';
+
+                // 新しいウィンドウを開く
+                window.open(legendUrl, 'Legend', 'width=1800,height=1200');
+            }
         </script>
     </body>
 </html>

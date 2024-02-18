@@ -94,6 +94,12 @@
             "tiles": ["https://www2.ffpri.go.jp/soilmap/tile/cs_noto/{z}/{x}/{y}.png"],
             "attribution": "<a href='' target='_blank'>能登(石川県)CS立体図</a>",
             "tileSize": 256
+        },
+        "landslide": {
+            "type": "raster",
+            "tiles": ["https://jmapweb3v.bosai.go.jp/map/xyz/landslide/{z}/{x}/{y}.png"],
+            "attribution": "<a href='https://maps.gsi.go.jp/development/ichiran.html#landslide' target='_blank'>地理院タイル(地すべり地形分布図日本全国版（防災科学技術研究所）)</a>",
+            "tileSize": 256
         }
     },
     "layers": [
@@ -257,6 +263,17 @@
             "id": "noto-cs",
             "type": "raster",
             "source": "noto-cs",
+            "layout": {
+                "visibility": "none"
+            },
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
+            "id": "landslide",
+            "type": "raster",
+            "source": "landslide",
             "layout": {
                 "visibility": "none"
             },
