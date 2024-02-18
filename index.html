@@ -174,7 +174,6 @@
                         </div>
                     </div>
                 </fieldset>
-                <!--
                 <summary class="yubi">
                     <strong>各種レイヤー</strong>
                 </summary>
@@ -182,13 +181,12 @@
                     <div class="checkbox-button-container">
                         <div class="column">
                             <div>
-                                <input type="checkbox" id="landslide" value="landslide" />
-                                <label for="landslide">地すべり地形分布図</label>
+                                <input type="checkbox" id="plateau-lod1" value="plateau-lod1" />
+                                <label for="plateau-lod1">3D都市モデルPLATEAU建物LOD1</label>
                             </div>
                         </div>
                     </div>
                 </fieldset>
-                -->
             </details>
         </div>
         <div class="map-overlay top">
@@ -284,6 +282,33 @@
                 // 産総研 シームレス標高タイルセット
                 // map.setTerrain({ source: 'aist-dem', exaggeration: 1 });
 
+                // 3D都市モデルPLATEAU建物（PMTiles）ソース
+                map.addSource('plateau-lod1', {
+                    type: 'vector',
+                    url: 'pmtiles://https://xs489works.xsrv.jp/pmtiles-data/plateau/PLATEAU_2022_LOD1.pmtiles',
+                    minzoom: 16,
+                    maxzoom: 16,
+                    attribution: '<a href="https://www.geospatial.jp/ckan/dataset/plateau">国土交通省 3D都市モデルPLATEAU（建物データLOD1）</a>',
+                });
+
+                // 3D都市モデルPLATEAU建物（PMTiles）レイヤ
+                map.addLayer({
+                    id: 'plateau-lod1',
+                    source: 'plateau-lod1',
+                    'source-layer': 'PLATEAU',
+                    minzoom: 14,
+                    maxzoom: 23,
+                    type: 'fill-extrusion',
+                    layout: {
+                        visibility: 'none',
+                    },
+                    paint: {
+                        'fill-extrusion-color': '#FFFFFF',
+                        'fill-extrusion-opacity': 1,
+                        'fill-extrusion-height': ['get', 'measuredHeight'],
+                    },
+                });
+
                 // スライダーCS立体図の不透明度を制御
                 const cs_sliderOpactiy = document.getElementById('cs-slider-opacity');
                 const cs_sliderOpactiyValue = document.getElementById('cs-slider-opacity-value');
@@ -343,6 +368,7 @@
             toggleMapLayerVisibility('ehime-cs', 'ehime-cs');
             toggleMapLayerVisibility('kochi-cs', 'kochi-cs');
             toggleMapLayerVisibility('kumamoto-oita-cs', 'kumamoto-oita-cs');
+            toggleMapLayerVisibility('plateau-lod1', 'plateau-lod1');
 
             /*
             // 各種レイヤー
