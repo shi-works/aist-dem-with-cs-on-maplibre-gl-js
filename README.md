@@ -88,6 +88,12 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - タイルサイズ：256x256ピクセル
     - ライセンス：CC BY 4.0
 
+## 国土地理院
+- 地理院タイル(地すべり地形分布図日本全国版（防災科学技術研究所）) 
+    - 出典：https://maps.gsi.go.jp/development/ichiran.html#landslide
+    - 概要：地すべり地形分布図は、地すべり変動によって形成された地形的痕跡である「地すべり地形」の外形と基本構造（滑落崖・移動体）を空中写真判読によりマッピングし、1:50,000地形図にその分布を示した図面です。
+    - ライセンス：利用にあたっては、[詳細](https://www.j-shis.bosai.go.jp/landslidemap)及び[利用規約](https://www.j-shis.bosai.go.jp/agreement-landslidemap)を参照。
+
 ## 国土交通省
 - 3D都市モデル（Project PLATEAU）建物データ（LOD1、PMTiles形式）
     - 出典：[法務省地図XMLアダプトプロジェクト amx-project/apb](https://github.com/amx-project/apb)
