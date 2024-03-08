@@ -128,6 +128,10 @@
                                 <label for="tochigi-cs">栃木県CS立体図</label>
                             </div>
                             <div>
+                                <input type="checkbox" id="tokyo-tama-cs" value="tokyo-tama-cs" checked />
+                                <label for="toyko-tama-cs">東京都(多摩地域)CS立体図</label>
+                            </div>
+                            <div>
                                 <input type="checkbox" id="noto-cs" value="noto-cs" />
                                 <label for="noto-cs">能登(石川県)CS立体図</label>
                             </div>
@@ -140,7 +144,7 @@
                                 <label for="gifu-cs">岐阜県CS立体図</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="shizuoka-cs" value="shizuoka-cs" checked />
+                                <input type="checkbox" id="shizuoka-cs" value="shizuoka-cs" />
                                 <label for="shizuoka-cs">静岡県CS立体図</label>
                             </div>
                             <div>
@@ -214,13 +218,13 @@
             const map = new maplibregl.Map({
                 container: 'map',
                 style: 'std_2.json',
-                zoom: 9.36,
+                zoom: 10.57,
                 minZoom: 1,
                 maxZoom: 23,
                 pitch: 0,
                 bearing: 0,
                 maxPitch: 85,
-                center: [138.2289, 35.0128],
+                center: [139.2188, 35.7082],
                 hash: true,
                 attributionControl: false,
             });
@@ -332,6 +336,7 @@
                     map.setPaintProperty('gifu-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     map.setPaintProperty('osaka-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     map.setPaintProperty('noto-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('tokyo-tama-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     cs_sliderOpactiyValue.textContent = e.target.value + '%';
                 });
 
@@ -362,6 +367,7 @@
             // CS立体図
             toggleMapLayerVisibility('fukushima-cs', 'fukushima-cs');
             toggleMapLayerVisibility('tochigi-cs', 'tochigi-cs');
+            toggleMapLayerVisibility('tokyo-tama-cs', 'tokyo-tama-cs');
             toggleMapLayerVisibility('noto-cs', 'noto-cs');
             toggleMapLayerVisibility('nagano-cs', 'nagano-cs');
             toggleMapLayerVisibility('gifu-cs', 'gifu-cs');

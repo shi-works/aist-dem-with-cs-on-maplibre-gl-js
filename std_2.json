@@ -86,13 +86,19 @@
         "osaka-cs": {
             "type": "raster",
             "tiles": ["https://xs489works.xsrv.jp/raster-tiles/pref-osaka/osaka-cs-tiles/{z}/{x}/{y}.png"],
-            "attribution": "<a href='' target='_blank'>大阪府CS立体図</a>",
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/cs' target='_blank'>大阪府CS立体図</a>",
             "tileSize": 256
         },
         "noto-cs": {
             "type": "raster",
             "tiles": ["https://www2.ffpri.go.jp/soilmap/tile/cs_noto/{z}/{x}/{y}.png"],
-            "attribution": "<a href='' target='_blank'>能登(石川県)CS立体図</a>",
+            "attribution": "<a href='https://www2.ffpri.go.jp/soilmap/data-src.html' target='_blank'>能登(石川県)CS立体図</a>",
+            "tileSize": 256
+        },
+        "tokyo-tama-cs": {
+            "type": "raster",
+            "tiles": ["https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-tama-2023-cs-tiles/{z}/{x}/{y}.png"],
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023' target='_blank'>東京都(多摩地域)CS立体図(東京都デジタルツイン実現プロジェクト 多摩地域点群データを加工して作成)</a>",
             "tileSize": 256
         },
         "landslide": {
@@ -231,7 +237,7 @@
             "type": "raster",
             "source": "shizuoka-cs",
             "layout": {
-                "visibility": "visible"
+                "visibility": "none"
             },
             "paint": {
                 "raster-opacity": 1
@@ -265,6 +271,17 @@
             "source": "noto-cs",
             "layout": {
                 "visibility": "none"
+            },
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
+            "id": "tokyo-tama-cs",
+            "type": "raster",
+            "source": "tokyo-tama-cs",
+            "layout": {
+                "visibility": "visible"
             },
             "paint": {
                 "raster-opacity": 1
