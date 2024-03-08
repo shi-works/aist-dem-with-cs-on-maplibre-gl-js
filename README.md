@@ -82,9 +82,19 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - 出典（タイルURL）：`https://shiworks.xsrv.jp/raster-tiles/pref-shizuoka/shizuoka-cs-tiles/{z}/{x}/{y}.png`
       - 原初データ出典：[VIRTUAL SHIZUOKA 静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuoka-2023-csmap)
       - 概要：令和元年度から令和3年度にかけて、静岡県が実施した航空レーザ測量成果を基に、地上画素寸法50センチの解像度で作成。
-      - ライセンス：CC BY 4.0
+      - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
     - 概要：G空間情報センターにて公開されている、[VIRTUAL SHIZUOKA 静岡県CS立体図](https://www.geospatial.jp/ckan/dataset/shizuoka-2023-csmap)をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
     - ズームレベル：4～18
+    - タイルサイズ：256x256ピクセル
+    - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+- 東京都(多摩地域) CS立体図
+    - 出典（タイルURL）：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-tama-2023-cs-tiles/{z}/{x}/{y}.png`
+      - 原初データ出典：[東京都デジタルツイン実現プロジェクト 多摩地域点群データ](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)
+      - 概要：陸部を航空レーザ測量により、取得し統合された16点/平方m以上の高密度点群データです。
+      - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+    - 概要：[CS立体図作成ツール(csmap-py)](https://github.com/MIERUNE/csmap-py)を利用し、東京都が公開している[東京都デジタルツイン実現プロジェクト 多摩地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)をもとに、CS立体図を作成。作成したCS立体図をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
+    - ズームレベル：4～19
     - タイルサイズ：256x256ピクセル
     - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
