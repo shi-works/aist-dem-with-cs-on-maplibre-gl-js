@@ -90,7 +90,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
 
 - 東京都(多摩地域) CS立体図（**試験公開中のため、予告なく変更または公開を中止する場合があります。**）
     - 出典（タイルURL）：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-tama-2023-cs-tiles/{z}/{x}/{y}.png`
-      - 原初データ出典：[東京都デジタルツイン実現プロジェクト 多摩地域点群データ（）](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)
+      - 原初データ出典：[東京都デジタルツイン実現プロジェクト 多摩地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)
       - 概要：航空レーザ測量による16点/平方m以上の高密度点群データ（グラウンドデータ）を基に作成した0.25m格子状の標高データです。
       - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
     - 概要：[CS立体図作成ツール(csmap-py)](https://github.com/MIERUNE/csmap-py)を利用し、東京都が公開している[東京都デジタルツイン実現プロジェクト 多摩地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)をもとに、CS立体図を作成。作成したCS立体図をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
