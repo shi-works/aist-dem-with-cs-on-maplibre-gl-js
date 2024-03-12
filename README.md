@@ -93,7 +93,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
       - 原初データ出典：[東京都デジタルツイン実現プロジェクト 多摩地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)
       - 概要：航空レーザ測量による16点/平方m以上の高密度点群データ（グラウンドデータ）を基に作成した0.25m格子状の標高データです。
       - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-    - 概要：[CS立体図作成ツール(csmap-py)](https://github.com/MIERUNE/csmap-py)を利用し、東京都が公開している[東京都デジタルツイン実現プロジェクト 多摩地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)をもとに、CS立体図を作成。作成したCS立体図をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
+    - 概要：株式会社MIERUNE開発の[CS立体図作成ツール(csmap-py)](https://github.com/MIERUNE/csmap-py)を利用し、東京都が公開している[東京都デジタルツイン実現プロジェクト 多摩地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)をもとに、CS立体図を作成。作成したCS立体図をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
     - ズームレベル：4～19
     - タイルサイズ：256x256ピクセル
     - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
