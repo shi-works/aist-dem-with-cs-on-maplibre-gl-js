@@ -107,7 +107,7 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - 八丈島：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-05-2023-cs-tiles/{z}/{x}/{y}.png`
     - 青ヶ島：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-06-2023-cs-tiles/{z}/{x}/{y}.png`
       - 原初データ出典：[東京都デジタルツイン実現プロジェクト 島しょ地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-shima-2023)
-      - 概要：陸部を航空レーザ測量、島しょ部の沿岸部を航空レーザ測深及びナローマルチビームによる16点/平方m以上の高密度点群データ（グラウンドデータ）を基に作成した0.25m格子状の標高データです。
+      - 概要：航空レーザ測量（陸部）、航空レーザ測深及びナローマルチビーム（島しょ部の沿岸部）による16点/平方m以上の高密度点群データ（グラウンドデータ）を基に作成した0.25m格子状の標高データです。
       - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
     - 概要：株式会社[MIERUNE](https://github.com/MIERUNE)開発の[CS立体図作成ツール(csmap-py)](https://github.com/MIERUNE/csmap-py)を利用し、東京都が公開している[東京都デジタルツイン実現プロジェクト 多摩地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023)をもとに、CS立体図を作成。作成したCS立体図をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
     - ズームレベル：4～19
