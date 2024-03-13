@@ -101,6 +101,43 @@
             "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/tokyopc-tama-2023' target='_blank'>東京都(多摩地域)CS立体図(東京都デジタルツイン実現プロジェクト 多摩地域点群データを加工して作成)</a>",
             "tileSize": 256
         },
+        "tokyo-shima-01-cs": {
+            "type": "raster",
+            "tiles": ["https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-01-2023-cs-tiles/{z}/{x}/{y}.png"],
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/tokyopc-shima-2023' target='_blank'>東京都(島しょ地域)CS立体図(東京都デジタルツイン実現プロジェクト 島しょ地域点群データを加工して作成)</a>",
+            "tileSize": 256
+        },
+        "tokyo-shima-02-cs": {
+            "type": "raster",
+            "tiles": ["https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-02-2023-cs-tiles/{z}/{x}/{y}.png"],
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/tokyopc-shima-2023' target='_blank'>東京都(島しょ地域)CS立体図(東京都デジタルツイン実現プロジェクト 島しょ地域点群データを加工して作成)</a>",
+            "tileSize": 256
+        },
+        "tokyo-shima-03-cs": {
+            "type": "raster",
+            "tiles": ["https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-03-2023-cs-tiles/{z}/{x}/{y}.png"],
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/tokyopc-shima-2023' target='_blank'>東京都(島しょ地域)CS立体図(東京都デジタルツイン実現プロジェクト 島しょ地域点群データを加工して作成)</a>",
+            "tileSize": 256
+        },
+        "tokyo-shima-04-cs": {
+            "type": "raster",
+            "tiles": ["https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-04-2023-cs-tiles/{z}/{x}/{y}.png"],
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/tokyopc-shima-2023' target='_blank'>東京都(島しょ地域)CS立体図(東京都デジタルツイン実現プロジェクト 島しょ地域点群データを加工して作成)</a>",
+            "tileSize": 256
+        },
+        "tokyo-shima-05-cs": {
+            "type": "raster",
+            "tiles": ["https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-05-2023-cs-tiles/{z}/{x}/{y}.png"],
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/tokyopc-shima-2023' target='_blank'>東京都(島しょ地域)CS立体図(東京都デジタルツイン実現プロジェクト 島しょ地域点群データを加工して作成)</a>",
+            "tileSize": 256
+        },
+        "tokyo-shima-06-cs": {
+            "type": "raster",
+            "tiles": ["https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-06-2023-cs-tiles/{z}/{x}/{y}.png"],
+            "attribution": "<a href='https://www.geospatial.jp/ckan/dataset/tokyopc-shima-2023' target='_blank'>東京都(島しょ地域)CS立体図(東京都デジタルツイン実現プロジェクト 島しょ地域点群データを加工して作成)</a>",
+            "tileSize": 256
+        },
+
         "landslide": {
             "type": "raster",
             "tiles": ["https://jmapweb3v.bosai.go.jp/map/xyz/landslide/{z}/{x}/{y}.png"],
@@ -288,17 +325,6 @@
             }
         },
         {
-            "id": "landslide",
-            "type": "raster",
-            "source": "landslide",
-            "layout": {
-                "visibility": "none"
-            },
-            "paint": {
-                "raster-opacity": 1
-            }
-        },
-        {
             "id": "水域",
             "maxzoom": 17,
             "type": "fill",
@@ -310,6 +336,17 @@
             }
         },
         {
+            "id": "landslide",
+            "type": "raster",
+            "source": "landslide",
+            "layout": {
+                "visibility": "none"
+            },
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
             "id": "地形表記面",
             "type": "fill",
             "source": "v",
@@ -318,6 +355,72 @@
             "paint": {
                 "fill-color": ["match", ["get", "vt_code"], 7401, "rgba(200,250,230,1)", 7402, "rgba(217,217,217,1)", 7403, "rgba(235,242,235,1)", "rgba(0,0,0,0)"],
                 "fill-opacity": ["interpolate", ["linear"], ["zoom"], 10, 0, 11, 1]
+            }
+        },
+        {
+            "id": "tokyo-shima-01-cs",
+            "type": "raster",
+            "source": "tokyo-shima-01-cs",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
+            "id": "tokyo-shima-02-cs",
+            "type": "raster",
+            "source": "tokyo-shima-02-cs",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
+            "id": "tokyo-shima-03-cs",
+            "type": "raster",
+            "source": "tokyo-shima-03-cs",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
+            "id": "tokyo-shima-04-cs",
+            "type": "raster",
+            "source": "tokyo-shima-04-cs",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
+            "id": "tokyo-shima-05-cs",
+            "type": "raster",
+            "source": "tokyo-shima-05-cs",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "raster-opacity": 1
+            }
+        },
+        {
+            "id": "tokyo-shima-06-cs",
+            "type": "raster",
+            "source": "tokyo-shima-06-cs",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "raster-opacity": 1
             }
         },
         {

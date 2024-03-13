@@ -132,6 +132,10 @@
                                 <label for="toyko-tama-cs">東京都(多摩地域)CS立体図</label>
                             </div>
                             <div>
+                                <input type="checkbox" id="tokyo-shima-cs" value="tokyo-shima-cs" checked />
+                                <label for="toyko-shima-cs">東京都(島しょ地域)CS立体図</label>
+                            </div>
+                            <div>
                                 <input type="checkbox" id="noto-cs" value="noto-cs" />
                                 <label for="noto-cs">能登(石川県)CS立体図</label>
                             </div>
@@ -337,6 +341,12 @@
                     map.setPaintProperty('osaka-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     map.setPaintProperty('noto-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     map.setPaintProperty('tokyo-tama-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('tokyo-shima-01-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('tokyo-shima-02-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('tokyo-shima-03-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('tokyo-shima-04-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('tokyo-shima-05-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('tokyo-shima-06-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     cs_sliderOpactiyValue.textContent = e.target.value + '%';
                 });
 
@@ -358,9 +368,20 @@
 
             // レイヤ表示・非表示切り替え関数
             function toggleMapLayerVisibility(checkboxId, layerId) {
-                document.getElementById(checkboxId).addEventListener('change', function (e) {
-                    map.setLayoutProperty(layerId, 'visibility', e.target.checked ? 'visible' : 'none');
-                });
+                if (checkboxId != 'tokyo-shima-cs') {
+                    document.getElementById(checkboxId).addEventListener('change', function (e) {
+                        map.setLayoutProperty(layerId, 'visibility', e.target.checked ? 'visible' : 'none');
+                    });
+                } else {
+                    document.getElementById(checkboxId).addEventListener('change', function (e) {
+                        map.setLayoutProperty('tokyo-shima-01-cs', 'visibility', e.target.checked ? 'visible' : 'none');
+                        map.setLayoutProperty('tokyo-shima-02-cs', 'visibility', e.target.checked ? 'visible' : 'none');
+                        map.setLayoutProperty('tokyo-shima-03-cs', 'visibility', e.target.checked ? 'visible' : 'none');
+                        map.setLayoutProperty('tokyo-shima-04-cs', 'visibility', e.target.checked ? 'visible' : 'none');
+                        map.setLayoutProperty('tokyo-shima-05-cs', 'visibility', e.target.checked ? 'visible' : 'none');
+                        map.setLayoutProperty('tokyo-shima-06-cs', 'visibility', e.target.checked ? 'visible' : 'none');
+                    });
+                }
             }
 
             // レイヤ表示・非表示切り替え制御
@@ -368,6 +389,7 @@
             toggleMapLayerVisibility('fukushima-cs', 'fukushima-cs');
             toggleMapLayerVisibility('tochigi-cs', 'tochigi-cs');
             toggleMapLayerVisibility('tokyo-tama-cs', 'tokyo-tama-cs');
+            toggleMapLayerVisibility('tokyo-shima-cs', 'tokyo-shima-cs');
             toggleMapLayerVisibility('noto-cs', 'noto-cs');
             toggleMapLayerVisibility('nagano-cs', 'nagano-cs');
             toggleMapLayerVisibility('gifu-cs', 'gifu-cs');
