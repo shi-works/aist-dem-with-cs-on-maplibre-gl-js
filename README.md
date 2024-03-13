@@ -101,12 +101,12 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
 <!--
 - 東京都(島しょ地域) CS立体図（**試験公開中のため、予告なく変更または公開を中止する場合があります。**）
     - 出典（タイルURL）
-    - 伊豆大島：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-01-2023-cs-tiles/{z}/{x}/{y}.png`
-    - 利島、新島、式根島、神津島：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-02-2023-cs-tiles/{z}/{x}/{y}.png`
-    - 三宅島：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-03-2023-cs-tiles/{z}/{x}/{y}.png`
-    - 御蔵島：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-04-2023-cs-tiles/{z}/{x}/{y}.png`
-    - 八丈島：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-05-2023-cs-tiles/{z}/{x}/{y}.png`
-    - 青ヶ島：`https://shiworks.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-06-2023-cs-tiles/{z}/{x}/{y}.png`
+    - 伊豆大島：`https://xs489works.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-01-2023-cs-tiles/{z}/{x}/{y}.png`
+    - 利島、新島、式根島、神津島：`https://xs489works.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-02-2023-cs-tiles/{z}/{x}/{y}.png`
+    - 三宅島：`https://xs489works.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-03-2023-cs-tiles/{z}/{x}/{y}.png`
+    - 御蔵島：`https://xs489works.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-04-2023-cs-tiles/{z}/{x}/{y}.png`
+    - 八丈島：`https://xs489works.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-05-2023-cs-tiles/{z}/{x}/{y}.png`
+    - 青ヶ島：`https://xs489works.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-06-2023-cs-tiles/{z}/{x}/{y}.png`
       - 原初データ出典：[東京都デジタルツイン実現プロジェクト 島しょ地域点群データ（グリッドデータ（0.25m））](https://www.geospatial.jp/ckan/dataset/tokyopc-shima-2023)
       - 概要：航空レーザ測量（陸部）、航空レーザ測深及びナローマルチビーム（島しょ部の沿岸部）による16点/平方m以上の高密度点群データ（グラウンドデータ）を基に作成した0.25m格子状の標高データです。
       - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
