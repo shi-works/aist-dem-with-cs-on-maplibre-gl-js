@@ -98,7 +98,6 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - タイルサイズ：256x256ピクセル
     - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
-<!--
 - 東京都(島しょ地域) CS立体図（**試験公開中のため、予告なく変更または公開を中止する場合があります。**）
     - 出典（タイルURL）
     - 伊豆大島：`https://xs489works.xsrv.jp/raster-tiles/tokyo-digitaltwin/tokyopc-shima-01-2023-cs-tiles/{z}/{x}/{y}.png`
@@ -114,7 +113,6 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - ズームレベル：4～19
     - タイルサイズ：256x256ピクセル
     - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
--->
 
 ## 国土地理院
 - 地理院タイル(地すべり地形分布図日本全国版（防災科学技術研究所）) 
