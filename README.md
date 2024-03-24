@@ -114,17 +114,15 @@ https://shi-works.github.io/aist-dem-with-cs-on-maplibre-gl-js/
     - タイルサイズ：256x256ピクセル
     - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
-<!--
 - 和歌山県 CS立体図（**試験公開中のため、予告なく変更または公開を中止する場合があります。**）
     - 出典（タイルURL）：`https://xs489works.xsrv.jp/raster-tiles/pref-wakayama/wakayamapc-cs-tiles/{z}/{x}/{y}.png`
       - 原初データ出典：[和歌山県 3次元点群データ](https://www.pref.wakayama.lg.jp/prefg/012100/d00213012.html)
       - 概要：和歌山県が保有する航空レーザ測量で得られた県域の約65％に及ぶ点群データ(経度、緯度、標高値を含むデータ)です。
-      - ライセンス：オープンデータ（データをパソコンにダウンロードして、申請なしに利用することが可能。出典の記載。）
-    - 概要：和歌山県がオープンデータとして公開している3次元点群データ（グラウンドデータ）をもとに、[GMT(the Generic Mapping Tools)](https://www.generic-mapping-tools.org/)の[triangulate](https://docs.generic-mapping-tools.org/dev/triangulate.html)を使用して1mDEMを作成。作成した1mDEMと株式会社[MIERUNE](https://github.com/MIERUNE)開発の[CS立体図作成ツール(csmap-py)](https://github.com/MIERUNE/csmap-py)を使用してCS立体図を作成。本データはCS立体図をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
+      - ライセンス：オープンデータ（データをパソコンにダウンロードして、申請なしに利用することが可能。出典の記載が必要。）
+    - 概要：和歌山県がオープンデータとして公開している3次元点群データ（グラウンドデータ）をもとに、[GMT(the Generic Mapping Tools)](https://www.generic-mapping-tools.org/)の[triangulate](https://docs.generic-mapping-tools.org/dev/triangulate.html)を使用して1mDEMを作成。作成した1mDEMと株式会社[MIERUNE](https://github.com/MIERUNE)開発の[CS立体図作成ツール(csmap-py)](https://github.com/MIERUNE/csmap-py)を使用してCS立体図を作成。本データは作成したCS立体図をWebメルカトル（EPSG:3857）に再投影した上で[gdal2tiles](https://gdal.org/programs/gdal2tiles.html)を使用してラスタータイル化したデータです。
     - ズームレベル：4～17
     - タイルサイズ：256x256ピクセル
     - ライセンス：[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
--->
 
 ## 国土地理院
 - 地理院タイル(地すべり地形分布図日本全国版（防災科学技術研究所）) 
