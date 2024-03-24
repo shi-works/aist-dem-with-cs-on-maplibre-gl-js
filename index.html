@@ -128,11 +128,11 @@
                                 <label for="tochigi-cs">栃木県CS立体図</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="tokyo-tama-cs" value="tokyo-tama-cs" checked />
+                                <input type="checkbox" id="tokyo-tama-cs" value="tokyo-tama-cs" />
                                 <label for="toyko-tama-cs">東京都(多摩地域)CS立体図</label>
                             </div>
                             <div>
-                                <input type="checkbox" id="tokyo-shima-cs" value="tokyo-shima-cs" checked />
+                                <input type="checkbox" id="tokyo-shima-cs" value="tokyo-shima-cs" />
                                 <label for="toyko-shima-cs">東京都(島しょ地域)CS立体図</label>
                             </div>
                             <div>
@@ -158,6 +158,10 @@
                             <div>
                                 <input type="checkbox" id="hyogo-cs" value="hyogo-cs" />
                                 <label for="hyogo-cs">兵庫県CS立体図</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="wakayama-cs" value="wakayama-cs" checked />
+                                <label for="wakayama-cs">和歌山県CS立体図</label>
                             </div>
                             <div>
                                 <input type="checkbox" id="okayama-cs" value="okayama-cs" />
@@ -222,13 +226,13 @@
             const map = new maplibregl.Map({
                 container: 'map',
                 style: 'std_2.json',
-                zoom: 10.57,
+                zoom: 9.25,
                 minZoom: 1,
                 maxZoom: 23,
                 pitch: 0,
                 bearing: 0,
                 maxPitch: 85,
-                center: [139.2188, 35.7082],
+                center: [135.5252, 33.9074],
                 hash: true,
                 attributionControl: false,
             });
@@ -347,6 +351,7 @@
                     map.setPaintProperty('tokyo-shima-04-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     map.setPaintProperty('tokyo-shima-05-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     map.setPaintProperty('tokyo-shima-06-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
+                    map.setPaintProperty('wakayama-cs', 'raster-opacity', parseInt(e.target.value, 10) / 100);
                     cs_sliderOpactiyValue.textContent = e.target.value + '%';
                 });
 
@@ -396,6 +401,7 @@
             toggleMapLayerVisibility('shizuoka-cs', 'shizuoka-cs');
             toggleMapLayerVisibility('osaka-cs', 'osaka-cs');
             toggleMapLayerVisibility('hyogo-cs', 'hyogo-cs');
+            toggleMapLayerVisibility('wakayama-cs', 'wakayama-cs');
             toggleMapLayerVisibility('okayama-cs', 'okayama-cs');
             toggleMapLayerVisibility('hiroshima-cs', 'hiroshima-cs');
             toggleMapLayerVisibility('ehime-cs', 'ehime-cs');
